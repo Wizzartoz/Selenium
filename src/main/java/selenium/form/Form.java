@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 import java.util.Collections;
 
 public class Form {
-    private final List<Field> fields;
+    private List<Field> fields;
+
+    public Form() {
+    }
 
     public Form(Field field, Field... fields) {
         this.fields = new ArrayList<>();
@@ -21,8 +24,9 @@ public class Form {
                 .collect(Collectors.toList());
     }
 
-    public void addField(Field field){
+    public Form addField(Field field){
         fields.add(field);
+        return this;
     }
 
 

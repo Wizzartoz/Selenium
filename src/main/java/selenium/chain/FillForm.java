@@ -1,6 +1,8 @@
 package selenium.chain;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
 import selenium.form.Field;
 import selenium.form.Form;
 
@@ -12,11 +14,11 @@ public class FillForm extends Reaching {
     }
 
     @Override
-    public void execute() {
+    public void execute(WebDriver driver, Wait wait) {
         for (Field field : form.getFields()) {
             WebElement element = driver.findElement(field.getSelector());
             element.sendKeys(field.getInputText());
         }
-        checkNext();
+        checkNext(driver,wait);
     }
 }

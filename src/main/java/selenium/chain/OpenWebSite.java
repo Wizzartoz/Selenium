@@ -1,7 +1,9 @@
 package selenium.chain;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 
 public class OpenWebSite extends Reaching {
     private final String url;
@@ -14,9 +16,9 @@ public class OpenWebSite extends Reaching {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void execute() {
+    public void execute(WebDriver driver, Wait wait) {
         driver.get(url);
         wait.until(ExpectedConditions.visibilityOfElementLocated(waitSelector));
-        checkNext();
+        checkNext(driver,wait);
     }
 }

@@ -1,7 +1,9 @@
 package selenium.chain;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import selenium.form.Button;
 
 public class OpenPage extends Reaching {
@@ -13,10 +15,10 @@ public class OpenPage extends Reaching {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void execute() {
+    public void execute(WebDriver driver, Wait wait) {
         WebElement element = driver.findElement(button.getSelector());
         element.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(button.getWaitSelector()));
-        checkNext();
+        checkNext(driver,wait);
     }
 }

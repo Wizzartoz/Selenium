@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 public class Form {
     private final List<Field> fields;
-    private final Button button;
 
-    public Form(Button button, Field field, Field... fields) {
-        this.button = button;
+    public Form(Field field, Field... fields) {
         this.fields = new ArrayList<>();
         this.fields.add(field);
         this.fields.addAll(convertArrayToList(fields));
@@ -22,11 +21,13 @@ public class Form {
                 .collect(Collectors.toList());
     }
 
-    public List<Field> getFields() {
-        return fields;
+    public void addField(Field field){
+        fields.add(field);
     }
 
-    public Button getButton() {
-        return button;
+
+    public List<Field> getFields() {
+        return Collections.unmodifiableList(fields);
     }
+
 }

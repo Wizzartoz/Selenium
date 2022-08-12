@@ -5,12 +5,10 @@ import org.openqa.selenium.By;
 public class Field {
     private final String inputText;
     private final By selector;
-    private final Enum<Type> type;
 
-    public Field(String inputText, By selector, Enum<Type> type) {
+    public Field(String inputText, By selector) {
         this.inputText = inputText;
         this.selector = selector;
-        this.type = type;
     }
 
     public String getInputText() {
@@ -21,7 +19,4 @@ public class Field {
         return selector;
     }
 
-    public Enum<Type> getType() {
-        return type;
-    }
 }

@@ -2,19 +2,18 @@ package selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.chain.FillForm;
 import selenium.chain.OpenPage;
 import selenium.chain.OpenWebSite;
 import selenium.chain.Reaching;
-import selenium.form.Button;
-import selenium.form.Form;
-import selenium.form.FormFactory;
-import selenium.form.StandardLoginFormFactory;
+import selenium.form.*;
 import selenium.webdriver.Drivers;
 import selenium.webdriver.WebDriverFactory;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ParserUser {
@@ -28,10 +27,10 @@ public class ParserUser {
         FormFactory factory = new StandardLoginFormFactory();
         Form form = factory.createForm();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         Reaching reaching = Reaching.linkWith(
                 new OpenWebSite(setting.getString("website"), By.id(setting.getString("wait.website.page.selector"))),
-                new FillForm(form, By.xpath(setting.getString("wait.fill.form"))),
+                new FillForm(form),
+                new OpenPage(new Button(By.xpath("//div[@class='_6ltg']/button[@name='login']"), By.xpath("//a[@href='/friends/']"))),
                 new OpenPage(new Button(By.xpath(setting.getString("all.friends.page.selector")),
                         By.xpath(setting.getString("wait.all.friends.selector")))),
                 new OpenPage(new Button(By.xpath(setting.getString("my.friends.page.selector")),
@@ -40,10 +39,10 @@ public class ParserUser {
         reaching.setWait(wait);
         reaching.execute();
 
-//        List<WebElement> facebookFriends = driver.findElements(By.cssSelector(".sxpk6l6v a[href^=\"https://www.facebook.com/profile.php?id=\"]"));
-//        for (WebElement element : facebookFriends) {
-//            System.out.println(element.getAttribute("href"));
-
+        List<WebElement> facebookFriends = driver.findElements(By.cssSelector(".sxpk6l6v .pzggbiyp [aria-label]"));
+        for (WebElement element : facebookFriends) {
+            System.out.println(element.getAttribute("aria-label"));
+        }
     }
 
 }

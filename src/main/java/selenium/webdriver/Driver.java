@@ -2,7 +2,7 @@ package selenium.webdriver;
 
 import java.util.ResourceBundle;
 
-public class Drivers {
+public class Driver {
     private static final ResourceBundle errors = ResourceBundle.getBundle("errors");
 
     public static WebDriverFactory create(Browser browser) {

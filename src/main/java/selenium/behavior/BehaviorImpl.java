@@ -22,8 +22,7 @@ public class BehaviorImpl extends Behavior {
                 .addField(new Field(
                         setting.getString("form.login"),
                         By.xpath(setting.getString("form.login.wait"))))
-                .addField(new Field(
-                        setting.getString("form.password"),
+                .addField(new Field(setting.getString("form.password"),
                         By.xpath(setting.getString("form.password.wait"))));
         Button loginButton = new Button(By.xpath(
                 setting.getString("button.login")),

@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 
-public class ElementsParser {
+public class ElementListParser {
     private final WebDriver driver;
 
-    public ElementsParser(WebDriver driver) {
+    public ElementListParser(WebDriver driver) {
         this.driver = driver;
     }
 

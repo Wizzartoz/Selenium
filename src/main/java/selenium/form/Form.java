@@ -7,13 +7,12 @@ import java.util.stream.Collectors;
 import java.util.Collections;
 
 public class Form {
-    private List<Field> fields;
+    private final List<Field> fields = new ArrayList<>();
 
     public Form() {
     }
 
     public Form(Field field, Field... fields) {
-        this.fields = new ArrayList<>();
         this.fields.add(field);
         this.fields.addAll(convertArrayToList(fields));
     }

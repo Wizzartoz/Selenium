@@ -1,4 +1,4 @@
-package selenium;
+package selenium.parser;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 
-public class Parser {
+public class ElementsParser {
     private final WebDriver driver;
-    public Parser(WebDriver driver) {
+
+    public ElementsParser(WebDriver driver) {
         this.driver = driver;
     }
 

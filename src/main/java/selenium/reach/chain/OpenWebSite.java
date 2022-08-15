@@ -1,4 +1,4 @@
-package selenium.chain;
+package selenium.reach.chain;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package selenium.form;
+package selenium.elements;
 
 import java.util.ArrayList;
 import java.util.Arrays;

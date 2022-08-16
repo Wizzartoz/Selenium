@@ -3,8 +3,8 @@ package selenium.reach.chain;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Wait;
-import selenium.form.Field;
-import selenium.form.Form;
+import selenium.elements.Field;
+import selenium.elements.Form;
 
 public class FillForm extends Reaching {
     private final Form form;

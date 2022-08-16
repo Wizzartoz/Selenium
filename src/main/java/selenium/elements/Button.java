@@ -1,4 +1,4 @@
-package selenium.form;
+package selenium.elements;
 
 import org.openqa.selenium.By;
 

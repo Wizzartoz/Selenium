@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
-import selenium.form.Button;
+import selenium.elements.Button;
 
 public class OpenPage extends Reaching {
     private final Button button;

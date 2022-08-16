@@ -17,25 +17,35 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class FacebookFriendListParser {
-    private WebDriver driver;
+
     private final ResourceBundle setting;
 
-    public FacebookFriendListParser() {
-        setting = ResourceBundle.getBundle(Browser.FIREFOX.getNameBundle());
+    public FacebookFriendListParser(Browser browser) {
+        setting = ResourceBundle.getBundle(browser.getNameBundle());
     }
 
     public List<String> parse() {
-        setWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Behavior behavior = new BehaviorImpl(ResourceBundle.getBundle("firefox_behavior"));
-        behavior.setup().execute(driver, wait);
-        List<WebElement> elements = new ElementListParser(driver).parse(By.cssSelector(setting.getString("target.selector")));
+        WebDriver driver = getWebDriver();
+        reachFriendList(driver);
+        List<WebElement> elements = getHtmlElementList(driver);
         return parseFriendList(elements);
     }
 
-    private void setWebDriver() {
+    private List<WebElement> getHtmlElementList(WebDriver driver) {
+        return new ElementListParser(driver)
+                .parse(By.cssSelector(setting.getString("target.selector")));
+    }
+
+    private void reachFriendList(WebDriver driver) {
+        int duration = Integer.parseInt(setting.getString("wait.duration"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
+        Behavior behavior = new BehaviorImpl(ResourceBundle.getBundle(setting.getString("behavior.bundle")));
+        behavior.setup().execute(driver, wait);
+    }
+
+    private WebDriver getWebDriver() {
         WebDriverFactory driverFactory = Driver.create(Browser.FIREFOX);
-        this.driver = driverFactory.createWebDriver();
+        return driverFactory.createWebDriver();
     }
 
     private List<String> parseFriendList(List<WebElement> elements) {

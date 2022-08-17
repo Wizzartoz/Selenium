@@ -15,9 +15,13 @@ public class OpenWebSite extends Reaching {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void execute(WebDriver driver, Wait wait) {
-        driver.get(site.getUrl());
-        wait.until(ExpectedConditions.visibilityOfElementLocated(site.getWaitSelector()));
-        checkNext(driver,wait);
+    public void execute(WebDriver driver, Wait wait) throws ReachingException {
+        try {
+            driver.get(site.getUrl());
+            wait.until(ExpectedConditions.visibilityOfElementLocated(site.getWaitSelector()));
+        } catch (Exception e) {
+            throw new ReachingException("Failed to open website");
+        }
+        checkNext(driver, wait);
     }
 }

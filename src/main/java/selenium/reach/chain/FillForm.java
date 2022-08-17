@@ -14,11 +14,16 @@ public class FillForm extends Reaching {
     }
 
     @Override
-    public void execute(WebDriver driver, Wait wait) {
+    public void execute(WebDriver driver, Wait wait) throws ReachingException {
         for (Field field : form.getFields()) {
-            WebElement element = driver.findElement(field.getSelector());
-            element.sendKeys(field.getInputText());
+            WebElement element;
+            try {
+                element = driver.findElement(field.getSelector());
+                element.sendKeys(field.getInputText());
+            } catch (Exception e) {
+                throw new ReachingException("Failed to complete the form");
+            }
         }
-        checkNext(driver,wait);
+        checkNext(driver, wait);
     }
 }

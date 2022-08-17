@@ -15,10 +15,14 @@ public class OpenPage extends Reaching {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void execute(WebDriver driver, Wait wait) {
-        WebElement element = driver.findElement(button.getSelector());
-        element.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(button.getWaitSelector()));
+    public void execute(WebDriver driver, Wait wait) throws ReachingException {
+        try {
+            WebElement element = driver.findElement(button.getSelector());
+            element.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(button.getWaitSelector()));
+        } catch (Exception e){
+            throw new ReachingException("Failed to open page");
+        }
         checkNext(driver,wait);
     }
 }

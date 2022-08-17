@@ -5,7 +5,11 @@ import selenium.webdriver.Browser;
 public class Main {
     public static void main(String[] args) {
         FacebookFriendListParser parser = new FacebookFriendListParser(Browser.FIREFOX);
-        parser.parse()
-                .forEach(System.out::println);
+        try {
+            parser.parse()
+                    .forEach(System.out::println);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

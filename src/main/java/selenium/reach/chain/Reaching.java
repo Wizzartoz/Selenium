@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Wait;
 public abstract class Reaching {
     private Reaching next;
 
-    public abstract void execute(WebDriver driver, Wait wait);
+    public abstract void execute(WebDriver driver, Wait wait) throws ReachingException;
 
     public static Reaching linkWith(Reaching first, Reaching... chain) {
         Reaching head = first;
@@ -19,7 +19,7 @@ public abstract class Reaching {
         return first;
     }
 
-    public void checkNext(WebDriver driver, Wait wait) {
+    public void checkNext(WebDriver driver, Wait wait) throws ReachingException{
         if (next != null) {
             next.execute(driver,wait);
         }

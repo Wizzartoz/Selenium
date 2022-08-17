@@ -31,8 +31,7 @@ public class BehaviorContext {
 
     private void setupFormList() {
         this.forms.add(new Form()
-                .addField(new Field(
-                        setting.getString("form.login"),
+                .addField(new Field(setting.getString("form.login"),
                         By.xpath(setting.getString("form.login.wait"))))
                 .addField(new Field(setting.getString("form.password"),
                         By.xpath(setting.getString("form.password.wait")))));
@@ -43,8 +42,7 @@ public class BehaviorContext {
     }
 
     private void setupButtonList() {
-        this.buttons.add(new Button(By.xpath(
-                setting.getString("button.login")),
+        this.buttons.add(new Button(By.xpath(setting.getString("button.login")),
                 By.xpath(setting.getString("button.login.wait"))));
         this.buttons.add(new Button(By.xpath(setting.getString("button.all.friends")),
                 By.xpath(setting.getString("button.all.friends.wait"))));

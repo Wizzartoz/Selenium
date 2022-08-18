@@ -7,11 +7,12 @@ import selenium.reach.chain.Reaching;
 
 import java.util.ResourceBundle;
 
-public class BehaviorImpl extends Behavior {
+public class BehaviorImpl implements Behavior {
 
+    private final ResourceBundle setting;
 
     public BehaviorImpl(ResourceBundle setting) {
-        super(setting);
+        this.setting = setting;
     }
 
     @Override
